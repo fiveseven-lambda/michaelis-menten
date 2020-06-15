@@ -1,14 +1,9 @@
 #include <X11/Xlib.h>
 #include <X11/keysym.h>
-#include <stdio.h>
-#include <list>
-#include <vector>
-#include <utility>
-#include <algorithm>
-#include <optional>
-#include <cmath>
-#include <limits>
 #include <unistd.h>
+#include <cstdio>
+#include <cmath>
+#include <vector>
 
 Display *display;
 Window window;
