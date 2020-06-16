@@ -246,6 +246,11 @@ set:
 				buffer = XCreatePixmap(display, window, width, height, depth);
 				break;
 			case DestroyNotify:
+				XFreeGC(winBlackGC);
+				XFreeGC(winWhiteGC);
+				XFreeGC(bufBlackGC);
+				XFreeGC(bufWhiteGC);
+				XFreePixmap(buffer);
 				XCloseDisplay(display);
 				return 0;
 			case ButtonPress:
@@ -377,7 +382,11 @@ run:
 			XNextEvent(display, &event);
 			switch(event.type){
 				case DestroyNotify:
-					XCloseDisplay(display);
+					XFreeGC(winBlackGC);
+					XFreeGC(winWhiteGC);
+					XFreeGC(bufBlackGC);
+					XFreeGC(bufWhiteGC);
+					XFreePixmap(buffer);
 					return 0;
 				case ConfigureNotify:
 					width = event.xconfigure.width;
